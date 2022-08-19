@@ -1,0 +1,49 @@
+<ng-container class="card">
+    <!-- <div   class="card">
+        <img *ngIf="biblioteca?.foto" src="http://localhost:8080/api/uploads/img/{{biblioteca.foto}} "
+            alt="{{biblioteca.foto}}" class="img-thumbnail rounded" >
+    </div>
+    <h3>Titulo: {{biblioteca.titulo}} </h3>
+    <div class="p">
+    <p>Contenido:{{biblioteca.descripcion}} </p>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary btn-smg" name="eliminar" (click)="comprar()">Comprar </button> -->
+    <div class="card" style="width: 50rem;">
+        <img *ngIf="biblioteca?.foto" src="http://localhost:8080/api/uploads/img/{{biblioteca.foto}} "
+        alt="{{biblioteca.foto}}" class="img-thumbnail rounded" >
+        <div class="card-body">
+            <h5 class="card-title">Titulo: {{biblioteca.titulo}}</h5>
+            <h5 class="card-title">Autor: {{biblioteca.autor}}</h5>
+            <h5 class="card-title">Editorial: {{biblioteca.editorial}}</h5>
+            <h5 class="card-title">Genero: {{biblioteca.genero}}</h5>
+            <h5 class="card-title">Precio: {{biblioteca.precio}}</h5>
+            <h5 class="card-title">Fecha: {{biblioteca.fecha}}</h5>
+            <h5>Descripcion:</h5>
+            <p class="card-text">{{biblioteca.descripcion}}</p>
+            <input type="checkbox" name="rentado" id="rentado" [(ngModel)]="libro.rentado">
+
+            <button type="button" class="btn btn-primary btn-smg" name="eliminar" (click)="comprar()">Comprar </button> 
+
+            <button type="submit" class="btn btn-primary" role="button" (click)="update()"  >Editar</button>
+
+            <form #clienteForm="ngForm" >
+                <label for="estado">Estado</label>
+                <input type="checkbox" name="rentado" id="rentado" [(ngModel)]="libro.rentado">
+                <div class="form-grup row">
+                    <div class="col-sm-6">
+                    
+                        
+                            <button type="submit" class="btn btn-primary" role="button" (click)="update()"   >Editar</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #errorContacto>
+    <p>Error el el contacto</p>
+</ng-template>
+<a routerLink="/home">Volver </a>

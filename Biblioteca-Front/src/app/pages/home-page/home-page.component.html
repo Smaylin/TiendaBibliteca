@@ -1,0 +1,37 @@
+<div class="bookshelf">
+    <div class="book-grid" >
+        <ul>
+
+            <li>
+                <img src="https://i.pinimg.com/564x/f7/c8/12/f7c812c9b0296cd9f119e33a06d9a256.jpg" alt="">
+        </ul>
+    </div>
+
+    <div class="shelf-shadows"></div>
+    <div class="shelf"></div>
+</div>
+<div class="bookshelf">
+    <div class="book-grid" >
+        <!-- <ul >
+            <li>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/51uLvJlKpNL._SX321_BO1,204,203,200_.jpg"
+                    alt="">
+            <li>
+                <img src="https://damonza.com/wp-content/uploads/portfolio/fiction/The-prophecy_03.jpg" alt="">
+            <li>
+                <img *ngIf="biblioteca?.foto" src="http://localhost:8080/api/uploads/img/{{biblioteca.foto}}"
+                alt="{{biblioteca.foto}}" class="img-thumbnail rounded">
+        </ul> -->
+        <li class="list-group-item active">{{biblioteca.titulo}}</li>
+        <li class="list-group-item">{{biblioteca.autor}}</li>
+        <li class="list-group-item">{{biblioteca.genero}}</li>
+        <li class="list-group-item">{{biblioteca.fecha | date:"fullDate"}}</li>
+    </div>
+    <div class="shelf-shadows"></div>
+    <div class="shelf"></div>
+    <div class="col-sm">
+        <!-- <img *ngIf="biblioteca?.foto" src="http://localhost:8080/api/uploads/img/{{biblioteca.foto}}"
+            alt="{{biblioteca.foto}}" class="img-thumbnail rounded"> -->
+    </div>
+    
+</div>

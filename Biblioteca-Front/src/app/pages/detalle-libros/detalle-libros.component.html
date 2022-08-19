@@ -1,0 +1,40 @@
+<div class="card border-primary mb-3" >
+    <div class="card-header">Libros</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de Libros </h5>
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button"  [routerLink]="['/libros/form']">Crear Cliente</button>
+        </div>
+        <div  *ngIf="libros?.length == 0" class="alert alert-info">
+            No hay Registros en la base de datos!
+        </div>
+        <table class="table table-bordered table-striped" *ngIf="libros?.length>0">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Editorial</th>
+                    <th>Genero</th>
+                    <th>Descripcon</th>
+                    <th>Rentado</th>
+                    <th>fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let libro of libros">
+                    <td><button class="btn btn-rounded btn-success" type="button" [routerLink]="['/libros/detalle', libro.id]" >{{libro.id}}</button> </td>
+                    <td>{{libro.titulo  | uppercase}}</td>
+                    <td>{{libro.autor }}</td>
+                    <td>{{libro.editorial }}</td>
+                    <td>{{libro.genero }}</td>
+                    <td>{{libro.descripcion }}</td>
+                    <td>{{libro.rentado }}</td>
+                    <td>{{libro.fecha | date: ' dd/MM yyyy' }}</td>
+                    <td> <button type="button" class="btn btn-primary" name="Editar" [routerLink]="['/libros/form/', libro.id]">Editar</button></td>
+                    <td> <button type="button" class="btn btn-danger btn-smg" name="eliminar"  (click)="delete(libro)">Eliminar</button></td>
+                </tr>
+        </table>
+        <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+    <li *ngFor="let err of errores">
+        {{err}}
+    </li>
+</ul>
+<div class="card bg-dark text-white">
+    <div class="card-header">{{titulos}}</div>
+    <div class="card-body">'
+    
+        <form #clienteForm="ngForm" >
+            <div class="form-group row">
+                <label for="titulo" class="col-form-label col-sm-2">Titulo</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="libro.titulo" name="titulo"  #titulo="ngModel"> <!--required minlength="4" es para hacer la validacion del lado de angular  -->
+                    <div class="alert alert-danger" *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
+                        <div *ngIf="titulo.errors['required']">
+                            Titulo es requerido
+                        </div>
+                        <div *ngIf="titulo.errors['minlength']">
+                            Titulo debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row " >
+                <label for="autor" class="col-form-label col-sm-2">Autor</label>
+                <div class=" col-sm-6 " >
+                    <input type="text" class=" form-control" [(ngModel)]="libro.autor" name="autor"   #autor="ngModel"><!--required  es para hacer la validacion del lado de angular  -->
+                    <div class="alert alert-danger" *ngIf="autor.invalid && (autor.dirty || autor.touched)">
+                        <div *ngIf="autor.errors['required']">
+                            Autor es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <label for="genero" class="col-form-label col-sm-2">Genero</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="libro.genero" name="genero"   #genero="ngModel" > <!--required email es para hacer la validacion del lado de angular  -->
+                    <div class="alert alert-danger" *ngIf="genero.invalid && (genero.dirty || genero.touched)">
+                        <div *ngIf="genero.errors['required']">
+                            Genero es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="editorial" class="col-form-label col-sm-2">Editorial</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="libro.editorial" name="editorial"   #editorial="ngModel" > <!--required email es para hacer la validacion del lado de angular  -->
+                    <div class="alert alert-danger" *ngIf="editorial.invalid && (editorial.dirty || editorial.touched)">
+                        <div *ngIf="editorial.errors['required']">
+                            Editorial es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="precio" class="col-form-label col-sm-2">Precio</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="libro.precio" name="precio"   #precio="ngModel" > <!--required email es para hacer la validacion del lado de angular  -->
+                    <div class="alert alert-danger" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                        <div *ngIf="precio.errors['required']">
+                            Precio es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Descripcion" class="col-form-label col-sm-2">Descripcion</label>
+                <div class="col-sm-6">
+                    <!-- <input type="text" class="form-control" [(ngModel)]="libro.descripcion" name="descripcion"   #descripcion="ngModel" > required email es para hacer la validacion del lado de angular  -->
+                    <textarea name="descripcion" id="" cols="30" rows="10" class="form-control" [(ngModel)]="libro.descripcion" name="descripcion"   #descripcion="ngModel" ></textarea>
+                    
+                    <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                        <div *ngIf="descripcion.errors['required']">
+                            Descripcion es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    
+            <div class="form-group row " >
+                <label for="fecha" class="col-form-label col-sm-2">Fecha</label>
+                <div class=" col-sm-6 " >
+                    <input type="date" class=" form-control" [(ngModel)]="libro.fecha" name="fecha" ><!--required  es para hacer la validacion del lado de angular  -->
+                
+                </div>
+            </div>
+            <label for="estado">Estado</label>
+            <input type="checkbox" name="rentado" id="rentado" [(ngModel)]="libro.rentado">
+            <div class="form-grup row">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary" role="button" (click)="create()" *ngIf="!libro.id else elseBlock" [disabled]="!clienteForm.form.valid"  >Crear</button>
+                    <ng-template #elseBlock>
+                        <button type="submit" class="btn btn-primary" role="button" (click)="update()"  [disabled]="!clienteForm.form.valid" >Editar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
